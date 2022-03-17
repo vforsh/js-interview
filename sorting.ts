@@ -56,7 +56,7 @@ export function insertionSort(nums: number[]): number[] {
 			j--
 		}
 		
-		nums[j] = x
+		nums[j + 1] = x
 	}
 	
 	return nums
@@ -161,6 +161,10 @@ export function radixSort(nums: number[]): number[] {
 }
 
 export function getDigit(num: number, place: number): number {
+	if (place < 0 || !Number.isInteger(place)) {
+		throw new Error(`Invalid place argument! 'place' should be a non-negative integer.`)
+	}
+	
 	if (place >= num.toString().length) {
 		return 0
 	}
