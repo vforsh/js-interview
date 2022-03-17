@@ -1,12 +1,14 @@
 import { describe, expect, test } from "vitest"
 import {
 	bubbleSort,
-	createNumbersArray, getDigit,
+	createNumbersArray,
+	getDigit,
 	insertionSort,
 	isSortedAsc,
 	isSortedDesc,
 	mergeSort,
-	quickSort, radixSort,
+	quickSort,
+	radixSort,
 	selectionSort,
 } from "./sorting"
 
@@ -41,12 +43,15 @@ describe("sorting", () => {
 		let sorted = insertionSort(nums)
 		
 		expect(isSortedAsc(sorted)).toBe(true)
+		expect(insertionSort([0, 3, 2, 1])).deep.eq([0, 1, 2, 3])
+		expect(insertionSort([2, 1])).deep.eq([1, 2])
 	})
 	
 	test("merge sort", () => {
 		let nums = createNumbersArray(100)
 		let sorted = mergeSort(nums)
 		
+		expect(mergeSort([3, 2, 1])).deep.eq([1, 2, 3])
 		expect(isSortedAsc(sorted)).toBe(true)
 	})
 	
@@ -55,6 +60,7 @@ describe("sorting", () => {
 		let sorted = quickSort(nums)
 		
 		expect(quickSort([])).deep.eq([])
+		expect(quickSort([1])).deep.eq([1])
 		expect(quickSort([3, 2, 1])).deep.eq([1, 2, 3])
 		expect(quickSort([1, 1, 1])).deep.eq([1, 1, 1])
 		expect(isSortedAsc(sorted)).toBe(true)
@@ -66,6 +72,7 @@ describe("sorting", () => {
 		expect(getDigit(123, 2)).toBe(1)
 		expect(getDigit(123, 3)).toBe(0)
 		expect(getDigit(123, 20)).toBe(0)
+		// expect(getDigit(123, -1)).toThrow()
 	})
 	
 	test("radix", () => {
@@ -73,5 +80,6 @@ describe("sorting", () => {
 		let sorted = radixSort(nums)
 		
 		expect(isSortedAsc(sorted)).toBe(true)
+		expect(radixSort([233, 3, 66, 10011])).deep.eq([3, 66, 233, 10011])
 	})
 })
