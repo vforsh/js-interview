@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest"
 import { heapSort } from "./heapsort"
 import { createNumbersArray, isSortedAsc, isSortedDesc } from "../sorting"
 
-describe('heapsort', () => {
+describe.skip('heapsort', () => {
 	test('asc', () => {
 		expect(heapSort([1])).deep.eq([1])
 		expect(heapSort([2, 1])).deep.eq([1, 2])
